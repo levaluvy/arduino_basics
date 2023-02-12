@@ -1,0 +1,17 @@
+int boc = 13;
+
+void setup() {
+  pinMode(boc, OUTPUT);
+  }
+ void loop() { 
+  digitalWrite(boc, HIGH);
+  delay(100);
+  digitalWrite(boc, LOW);
+  delay(100);
+  digitalWrite(boc, HIGH);
+  delay(50);
+  digitalWrite(boc, LOW);
+  delay(50);
+
+ }
+

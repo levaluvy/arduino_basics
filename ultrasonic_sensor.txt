@@ -1,0 +1,27 @@
+const int Trigger = 13;
+const int Echo = 12;
+
+void setup(){
+  Serial.begin(9600);
+  pinMode(Trigger, OUTPUT);
+  pinMode(Echo, INPUT);
+  digitalWrite(Trigger, LOW);
+}
+
+void loop()
+{
+  long t;
+  long d;
+
+  digitalWrite(Trigger, HIGH);
+  digitalWrite(Trigger, LOW);
+
+  t = pulseIn(Echo, HIGH);
+  d = t/59;
+
+  Serial.print("Distancia: ");
+  Serial.print(d);
+  Serial.print("cm");
+  Serial.println();
+  delay(500);
+}

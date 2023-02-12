@@ -1,0 +1,44 @@
+const int Trigger = 13;
+const int Echo = 11;
+int LED = 10;
+int LDR = A0;
+int threshold = 100; 
+
+
+void setup(){
+  Serial.begin(9600);
+  pinMode(Trigger, OUTPUT);
+  pinMode(Echo, INPUT);
+  pinMode(LED, OUTPUT);
+  pinMode(LDR, INPUT);
+  digitalWrite(Trigger, LOW);
+}
+
+void loop()
+{
+  long t;
+  long d;
+
+  digitalWrite(Trigger, HIGH);
+  digitalWrite(Trigger, LOW);
+
+  t = pulseIn(Echo, HIGH);
+  d = t/59;
+
+  Serial.print("Distancia: ");
+  Serial.print(d);
+  Serial.print("cm");
+  Serial.println();
+  delay(500);
+
+  int input = analogRead(LDR);
+   if (input > threshold){
+     digitalWrite(LED, LOW);
+   }else{
+     if (d < 5){
+     digitalWrite(LED, HIGH);
+     }
+   }
+    Serial.print(input);
+    Serial.print("\n");
+}

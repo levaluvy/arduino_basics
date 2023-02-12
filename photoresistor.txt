@@ -1,0 +1,21 @@
+int LED = 13;
+int LDR = A0;
+int threshold = 100; //sensibility of the photoresistor
+
+void setup() {
+  pinMode(LED, OUTPUT);
+  pinMode(LDR, INPUT);
+  Serial.begin(9600);
+}
+
+ void loop() { 
+   int input = analogRead(LDR);
+   if (input > threshold){
+     digitalWrite(LED, LOW);
+   }else{
+     digitalWrite(LED, HIGH);
+   }
+    Serial.print(input);
+    Serial.print("\n");
+ }
+
